@@ -22,7 +22,7 @@ export async function signIn(_: { error?: string }, formData: FormData) {
 
   if (result.success) {
     const cookieStore = await cookies()
-    cookieStore.set('@test-project:user', JSON.stringify({ username }), {
+    cookieStore.set('@test-project:user', JSON.stringify(result.user), {
       httpOnly: true,
       path: '/',
       secure: process.env.NODE_ENV === 'production',

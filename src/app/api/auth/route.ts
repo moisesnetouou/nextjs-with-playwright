@@ -4,16 +4,29 @@ export async function POST(req: Request) {
   const { username, password } = await req.json()
 
   if (username === 'admin' && password === '123456') {
-    const response = NextResponse.json({ success: true })
+    const user = {
+      name: 'admin',
+      username: 'admin',
+      roles: ['admin'],
+    }
 
-    response.cookies.set('@test-project:user', JSON.stringify({ username }), {
-      httpOnly: true,
-      path: '/',
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+    return NextResponse.json({
+      success: true,
+      user,
     })
+  }
 
-    return response
+  if (username === '' && password === '123456') {
+    const user = {
+      name: 'client',
+      username: 'client',
+      roles: ['user'],
+    }
+
+    return NextResponse.json({
+      success: true,
+      user,
+    })
   }
 
   return NextResponse.json({ success: false }, { status: 401 })
