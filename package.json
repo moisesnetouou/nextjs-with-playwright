@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-with-playwright",
-  "version": "0.1.0",
+  "name": "playwright-dimension-c-137",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
